@@ -1,0 +1,64 @@
+{
+  "name": "vuln-scanner-cli",
+  "version": "1.0.0",
+  "description": "A comprehensive dependency vulnerability scanner for Node.js applications",
+  "main": "src/scanner.js",
+  "bin": {
+    "vuln-scan": "./bin/cli.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js",
+    "test": "jest",
+    "dev": "nodemon bin/cli.js",
+    "prepublishOnly": "npm test",
+    "demo": "node demo.js",
+    "precheck": "node scripts/pre-publish-check.js",
+    "publish-check": "npm run precheck && npm publish --dry-run"
+  },
+  "keywords": [
+    "vulnerability",
+    "security",
+    "dependencies",
+    "npm",
+    "audit",
+    "cli",
+    "scanner",
+    "nodejs",
+    "package-security",
+    "dependency-check"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/yourusername/vuln-scanner-cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/vuln-scanner-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/vuln-scanner-cli/issues"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "commander": "^11.0.0",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1",
+    "semver": "^7.5.4",
+    "axios": "^1.5.0",
+    "fs-extra": "^11.1.1",
+    "inquirer": "^8.2.6",
+    "table": "^6.8.1",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
