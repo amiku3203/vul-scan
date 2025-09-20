@@ -27,15 +27,15 @@
     "package-security",
     "dependency-check"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "Amit Kumar <kumaramit28538@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/yourusername/vuln-scanner-cli#readme",
+  "homepage": "https://github.com/amiku3203/vul-scan.git#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/vuln-scanner-cli.git"
+    "url": "git+https://github.com/amiku3203/vul-scan.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/vuln-scanner-cli/issues"
+    "url": "https://github.com/amiku3203/vul-scan.git/issues"
   },
   "files": [
     "bin/",

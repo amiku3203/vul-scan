@@ -1,4 +1,4 @@
-const VulnerabilityScanner = require('../src/scanner');
+ const VulnerabilityScanner = require('../src/scanner');
 const PackageParser = require('../src/parsers/packageParser');
 const VulnerabilityDatabase = require('../src/vulnerabilityDb');
 const fs = require('fs-extra');
@@ -246,7 +246,23 @@ describe('Integration Tests', () => {
       severity: 'low'
     });
 
-    // This test would require actual network calls, so we'll mock the vulnerability DB
+    // Mock the parser to return test dependencies
+    const mockDependencies = [
+      {
+        name: 'lodash',
+        installedVersion: '4.17.20',
+        isDirect: true,
+        type: 'dependencies'
+      }
+    ];
+
+    const mockParser = {
+      getAllDependencies: jest.fn().mockResolvedValue(mockDependencies),
+      isVersionVulnerable: jest.fn().mockReturnValue(false)
+    };
+    scanner.parser = mockParser;
+
+    // Mock the vulnerability DB to avoid network calls
     const mockVulnDb = {
       getVulnerabilities: jest.fn().mockResolvedValue([])
     };
@@ -258,5 +274,7 @@ describe('Integration Tests', () => {
     expect(results).toHaveProperty('vulnerabilities');
     expect(results).toHaveProperty('dependencies');
     expect(results.dependencies.length).toBeGreaterThan(0);
+    expect(mockParser.getAllDependencies).toHaveBeenCalled();
+    expect(mockVulnDb.getVulnerabilities).toHaveBeenCalledWith(mockDependencies);
   });
 });
